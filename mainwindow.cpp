@@ -2,12 +2,21 @@
 #include "ui_mainwindow.h"
 
 #include <QCameraInfo>
+#include <QWidget>
+#include "ui_dialogAbout.h"
+#include <QDialog>
+#include <cstdio>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //construct the about dialog
+    dialogAbout = setup_aboutDialog();
+    connect(ui->actionAbout, SIGNAL(triggered()), dialogAbout, SLOT(show()));
+
     //create the camera object and view object
     camera = new QCamera(QCameraInfo::defaultCamera());
     view = new QCameraViewfinder();
@@ -25,5 +34,15 @@ MainWindow::~MainWindow()
     delete ui;
     delete camera;
     delete view;
+    delete dialogAbout;
 
+}
+
+QDialog* MainWindow::setup_aboutDialog()
+{
+    //set up the about dialog
+    QDialog* aboutDialog = new QDialog();
+    Ui::DialogAbout uiDialogAbout;
+    uiDialogAbout.setupUi(aboutDialog);
+    return aboutDialog;
 }

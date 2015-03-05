@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Camera Viewer</string>
+   <string>CamView</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -24,19 +24,32 @@
     </item>
    </layout>
   </widget>
-  <action name="action_About">
-   <property name="text">
-    <string>&amp;About</string>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>689</width>
+     <height>21</height>
+    </rect>
    </property>
-  </action>
+   <widget class="QMenu" name="menuDevice">
+    <property name="title">
+     <string>Device</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuDevice"/>
+   <addaction name="menuHelp"/>
+  </widget>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
-   </property>
-  </action>
-  <action name="actionPlaceholder">
-   <property name="text">
-    <string>Placeholder</string>
    </property>
   </action>
  </widget>

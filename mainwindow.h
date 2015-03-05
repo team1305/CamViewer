@@ -17,11 +17,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
 private:
     Ui::MainWindow *ui;
+    QDialog* dialogAbout;
 
     QCamera* camera;
     QCameraViewfinder* view;
+
+    QDialog* setup_aboutDialog();
 };
 
 #endif // MAINWINDOW_H
