@@ -10,6 +10,7 @@ ChooserDialog::ChooserDialog(QWidget *parent) :
     populateList();
     connect(ui->lstDevices, SIGNAL(currentRowChanged(int)), this, SLOT(updateSelected(int)));
     connect(ui->btnSelect, SIGNAL(clicked()), this, SLOT(emitSelectButtonPress()));
+    currentCamera = camlist.at(0);
 }
 
 void ChooserDialog::populateList()
@@ -18,6 +19,7 @@ void ChooserDialog::populateList()
     foreach(const QCameraInfo &cam, camlist)
     {
        ui->lstDevices->addItem(cam.description());
+       ui->lstDevices->setCurrentRow(0);
     }
 }
 
