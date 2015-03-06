@@ -37,6 +37,7 @@
     <property name="title">
      <string>Device</string>
     </property>
+    <addaction name="actionSelect_Device"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -50,6 +51,11 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionSelect_Device">
+   <property name="text">
+    <string>Select Device</string>
    </property>
   </action>
  </widget>

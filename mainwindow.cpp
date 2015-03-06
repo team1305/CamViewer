@@ -1,11 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QCameraInfo>
-#include <QWidget>
-#include "ui_dialogAbout.h"
-#include <QDialog>
-#include <cstdio>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,6 +22,14 @@ MainWindow::MainWindow(QWidget *parent) :
     camera->setCaptureMode(QCamera::CaptureVideo);
     //start the camera
     camera->start();
+
+    // setup the device chooser dialog
+    d = new ChooserDialog();
+    connect(ui->actionSelect_Device, SIGNAL(triggered()), d, SLOT(show()));
+    connect(d, SIGNAL(selectButtonPressed(QCameraInfo*)), this, SLOT(changeCamera(QCameraInfo*)));
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -45,4 +48,12 @@ QDialog* MainWindow::setup_aboutDialog()
     Ui::DialogAbout uiDialogAbout;
     uiDialogAbout.setupUi(aboutDialog);
     return aboutDialog;
+}
+
+void MainWindow::changeCamera(QCameraInfo* camInfo)
+{
+    if(camera != nullptr) delete camera;
+    camera = new QCamera(*camInfo);
+    camera->setViewfinder(view);
+    camera->start();
 }

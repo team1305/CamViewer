@@ -14,12 +14,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    chooserdialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    chooserdialog.h
 
 FORMS    += mainwindow.ui \
-    dialogAbout.ui
+    dialogAbout.ui \
+    chooserdialog.ui
 
 QT += multimedia multimediawidgets widgets
 
